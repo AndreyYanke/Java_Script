@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    const basketItems = ['Комп', 'Мышка', 'Клава', 'Монитор'];
+    const ItemsCost = [['Комп', 1000], ['Мышка', 150], ['Клава', 200], ['Монитор' , 600]];
+
+    const getItemPrice = (item, array) => {
+        const items = [];
+        const costs = [];
+        // предполагаем, что мы знаем структуру массива со стоимостями товара, поэтому разбиваем его
+        // на 2 одномерных массива
+        for (let i = 0; i < array.length; i++) {
+            items.push(array[i][0]);
+            costs.push(array[i][1]);
+        }
+        // используя метод .indexOf получаем индекс товара в массиве с названиями товаров и возвращаем стоимость
+        // по этому индексу из массива цен
+        return costs[items.indexOf(item)];
+    };
+
+    const countBasketPrice = (basketArr, costArr) => {
+        let totalCost = 0;
+        for (let i = 0; i < basketArr.length; i++) {
+            // на каждой итерации обхода массива корзины обращаемся к функции получения стоимости единицы товара.
+            totalCost += getItemPrice(basketArr[i], costArr);
+        }
+        return totalCost;
+    };
+    console.log('Cтоимость корзины: ' + countBasketPrice(basketItems, ItemsCost) + '$');
+
+</script>
+</body>
+</html>
