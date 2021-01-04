@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    function isPrime(num) {
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return num > 1;
+    };
+
+
+    function getPrime(num){
+        const primes = [];
+
+        for (let i = 2; i <= num; i++){
+            if (isPrime(i)){
+                primes.push(i);
+            }
+        }
+        return primes;
+    }
+
+    console.log(getPrime(100))
+
+
+
+
+</script>
+</body>
+</html>
